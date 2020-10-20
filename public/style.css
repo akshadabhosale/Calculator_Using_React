@@ -4,3 +4,7 @@ h2{
 body{
     background-color:#b2ebf2;
 }
+.board{
+    height:50% ;
+    width: 50%;
+}
