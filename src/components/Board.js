@@ -8,9 +8,53 @@ class Board extends React.Component{
     constructor(props)
     {
         super(props);
+        this.state={
+            op1:0,
+            op2:0,
+            operation:"empty",
+            break:true,
+            temp:0,
+            op1get:false
+
+        }
     }
    keyPress=(i)=>{
-        alert(i);
+       // alert(i);
+       if(this.checkNotNumber(i))
+       {
+           this.state.operation=i;
+           //this.state.break=false;
+           console.log(this.state.operation);
+           this.state.op1get=true;
+           if( this.state.op1get) {
+           this.setOperand1()
+           }
+
+       }
+       if(!(this.checkNotNumber(i)) && this.state.break)
+       {
+           this.state.temp=this.state.temp*10+i;
+           console.log(this.state.temp);
+           this.state.break=true;
+
+
+       }
+        
+    }
+    setOperand1=()=>
+    {
+        console.log(this.state.temp);
+        this.state.op1=this.state.temp;
+
+
+    }
+
+    checkNotNumber=(i)=>
+    {
+        if(i=="+" || i=="-" || i=="*" || i=="/" || i=="=")
+        {
+            return true
+        }
     }
 
     render()
