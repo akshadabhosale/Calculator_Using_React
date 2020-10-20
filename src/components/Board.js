@@ -14,7 +14,8 @@ class Board extends React.Component{
             operation:"empty",
             break:true,
             temp:0,
-            op1get:false
+            op1get:false,
+           // op2get:false
 
         }
     }
@@ -23,7 +24,7 @@ class Board extends React.Component{
        if(this.checkNotNumber(i))
        {
            this.state.operation=i;
-           //this.state.break=false;
+           this.state.break=false;
            console.log(this.state.operation);
            this.state.op1get=true;
            if( this.state.op1get) {
@@ -31,21 +32,35 @@ class Board extends React.Component{
            }
 
        }
-       if(!(this.checkNotNumber(i)) && this.state.break)
+       if(!(this.checkNotNumber(i)) && !(this.state.op1get) && (!(this.state.break)))
        {
            this.state.temp=this.state.temp*10+i;
-           console.log(this.state.temp);
-           this.state.break=true;
+           //console.log(this.state.temp);
+          // this.state.break=true;
+
 
 
        }
+       if(!(this.checkNotNumber(i)) && !(this.state.op2get))
+       {
+           this.state.temp=this.state.temp*10+i;
+           console.log(this.state.temp);
+           //this.state.break=true;
+          
+
+   
+       }
+    
+
+   
         
     }
     setOperand1=()=>
     {
-        console.log(this.state.temp);
+        //console.log(this.state.temp);
         this.state.op1=this.state.temp;
-
+        //console.log(this.state.op1);
+        this.state.temp=0;
 
     }
 
